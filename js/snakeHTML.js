@@ -21,7 +21,7 @@
             gameScoreElm,
             isGamePaused = true,
             isGameOver = true,
-            aboutGame = "snakeHTML V1.0 - copyright 2016<br/>Author: Ali Shahrivarian"
+            aboutGame = "snakeHTML V0.9b - copyright 2016<br/>Author: Ali Shahrivarian"
                 + "<br/>E-Mail:<a href='mailto:ali.shahrivarian@gmail.com'>ali.shahrivarian@gmail.com</a>"
                 + "<br/>LinkedIn:<a href='https://ir.linkedin.com/in/ali-shahrivarian-78a29084'>https://ir.linkedin.com/in/ali-shahrivarian-78a29084</a>";
 
