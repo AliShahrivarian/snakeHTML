@@ -1,0 +1,107 @@
+body{
+    background: grey;
+}
+#snakeHTMLGameBoard{
+    position: fixed;
+    background: white;
+}
+#snakeHTMLMenu{
+    position: relative;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+#snakeHTMLGameBoard .gameBoardSections{
+    position: relative;
+    width: 1%;
+    height: 1%;
+    float: left;
+}
+#snakeHTMLGameBoard .gameBoardSections.snake{
+    background: green;
+}
+#snakeHTMLGameBoard.roundSnake .gameBoardSections.snake,
+#snakeHTMLGameBoard.roundSnake .gameBoardSections.seed{
+    border-radius: 50%;
+}
+#snakeHTMLGameBoard .gameBoardSections.seed{
+    background: red;
+}
+#snakeHTMLGameBoard .gameBoardSections.wall{
+    background: brown;
+}
+#snakeHTMLAbout{
+    position: fixed;
+    background: white;
+    border: 10px solid #9C27B0;
+    border-radius: 10px;
+    padding: 16px;
+}
+#snakeStartCoundDown{
+    position: fixed;
+    width: 30%;
+    text-align: center;
+    text-align: -webkit-center;
+    left:35%;
+    top:20%;
+    background:white;
+    border: 10px solid #9C27B0;
+}
+.helpsIcon{
+    font-size: 20px;
+    color:blue;
+    font-weight: bold;
+    display: block;
+    width: 1px;
+}
+#startCounterSpan{
+    font-size: 60px;
+    color:green;
+    font-weight: bold;
+}
+#snakeStartCoundDown table{
+    position: relative;
+    width: 50%;
+    text-align: center;
+    text-align: -webkit-center;
+}
+#snakeStartCoundDown table tr td{
+    padding: 3px 22px;
+    text-align: center;
+    text-align: -webkit-center;
+}
+#helpRightArrow{
+    border-top: 16px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 16px solid blue;
+}
+#helpLeftArrow{
+    border-top: 16px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-right: 16px solid blue;
+}
+#helpUpArrow{
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+    border-top: 17px solid blue;
+}
+#helpDownArrow{
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+    border-bottom: 17px solid blue;
+}
+#snakeGameOver{
+    font-size: 40px;
+    color:red;
+    background:white;
+    position: fixed;
+    width: 30%;
+    text-align: center;
+    text-align: -webkit-center;
+    left:35%;
+    top:20%;
+    border: 10px solid #9C27B0;
+}
+.hide{
+    display: none!important;
+}
