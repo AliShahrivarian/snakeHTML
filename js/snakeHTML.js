@@ -20,9 +20,8 @@
             gameScore = -1,
             gameScoreElm,
             isGamePaused = true,
-            isGameOver = false,
-            aboutGame = "snakeHTML V1.0 - 2016<br/>Author: Ali Shahrivarian"
-                + "<br/>License:<a href='https://github.com/AliShahrivarian/snakeHTML/blob/master/LICENSE'>GPL Version 3</a>"
+            isGameOver = true,
+            aboutGame = "snakeHTML V1.0 - copyright 2016<br/>Author: Ali Shahrivarian"
                 + "<br/>E-Mail:<a href='mailto:ali.shahrivarian@gmail.com'>ali.shahrivarian@gmail.com</a>"
                 + "<br/>LinkedIn:<a href='https://ir.linkedin.com/in/ali-shahrivarian-78a29084'>https://ir.linkedin.com/in/ali-shahrivarian-78a29084</a>";
 
@@ -47,7 +46,6 @@
         }
 
         function resetGame() {
-            isGameOver = false;
             createSnake();
             produceSeed();
             run();
@@ -83,12 +81,12 @@
             startCountDownElm.innerHTML = startCountDown;
             startCountDownWrapperElm.appendChild(startCountDownElm);
             var helps = document.createElement("div");
-            helps.innerHTML +="<table><tbody>"+
+            helps.innerHTML += "<table><tbody>" +
                 "<tr><td><span id='helpRightArrow' class='helpsIcon'></span></td><td><span>Turn Right</span></td></tr>" +
                 "<tr><td><span id='helpLeftArrow' class='helpsIcon'></span></td><td><span>Turn Left</span></td></tr>" +
                 "<tr><td><span id='helpUpArrow' class='helpsIcon'></span></td><td><span>Turn Up</span></td></tr>" +
                 "<tr><td><span id='helpDownArrow' class='helpsIcon'></span></td><td><span>Turn Down</span></td></tr>" +
-                "<tr><td><span id='helpPause' class='helpsIcon'>P</span></td><td><span>Pause</span></td></tr>"+
+                "<tr><td><span id='helpPause' class='helpsIcon'>P</span></td><td><span>Pause</span></td></tr>" +
                 "</tbody></table>";
             startCountDownWrapperElm.appendChild(helps);
             document.body.appendChild(startCountDownWrapperElm);
@@ -116,9 +114,11 @@
             menu.appendChild(btnPlace);
             var scoreTitle = document.createElement("span");
             scoreTitle.innerText = "Score: ";
+            scoreTitle.style.color = "white";
             menu.appendChild(scoreTitle);
             gameScoreElm = document.createElement("span");
             gameScoreElm.id = "snakeGameScore";
+            gameScoreElm.style.color = "white";
             gameScoreElm.innerText = "0";
             menu.appendChild(gameScoreElm);
             document.body.appendChild(menu);
@@ -251,30 +251,39 @@
             return true;
         }
         function run() {
-            document.getElementById("snakeGameOver").classList.add("hide");
-            startCountDownWrapperElm.className = startCountDownWrapperElm.className.replace("hide", "");
-            startCountDownInterval = window.setInterval(function () {
-                if (--startCountDown == 0) {
-                    window.clearInterval(startCountDownInterval);
-                    startCountDownWrapperElm.classList.add("hide");
-                    startCountDown = 3;
-                    var resumePauseBtn = document.querySelector("button[name='Pause']");
-                    resumePauseBtn.className = resumePauseBtn.className.replace("hide", "");
-                    gameInterval = window.setInterval(function () {
-                        isGamePaused = false;
-                        if (snakeDirection == "right") {
-                            sMoveRight();
-                        } else if (snakeDirection == "left") {
-                            sMoveLeft();
-                        } else if (snakeDirection == "up") {
-                            sMoveUp();
-                        } else if (snakeDirection == "down") {
-                            sMoveDown();
-                        }
-                    }, gameSpeed * gameIntervalTimer);
-                }
-                startCountDownElm.innerText = startCountDown;
-            }, 1000);
+            function s() {
+                window.clearInterval(startCountDownInterval);
+                startCountDownWrapperElm.classList.add("hide");
+                var resumePauseBtn = document.querySelector("button[name='Pause']");
+                resumePauseBtn.className = resumePauseBtn.className.replace("hide", "");
+                gameInterval = window.setInterval(function () {
+                    isGamePaused = false;
+                    if (snakeDirection == "right") {
+                        sMoveRight();
+                    } else if (snakeDirection == "left") {
+                        sMoveLeft();
+                    } else if (snakeDirection == "up") {
+                        sMoveUp();
+                    } else if (snakeDirection == "down") {
+                        sMoveDown();
+                    }
+                }, gameSpeed * gameIntervalTimer);
+            }
+            if (isGameOver || startCountDown > 0) {
+                isGameOver = false;
+               startCountDownElm.innerText = startCountDown = 3;
+                window.clearInterval(startCountDownInterval);
+                document.getElementById("snakeGameOver").classList.add("hide");
+                startCountDownWrapperElm.className = startCountDownWrapperElm.className.replace("hide", "");
+                startCountDownInterval = window.setInterval(function () {
+                    if (--startCountDown == 0) {
+                        s();
+                    }
+                    startCountDownElm.innerText = startCountDown;
+                }, 1000);
+            } else {
+                s();
+            }
         }
         function changeLevel() {
             addSpeed();
