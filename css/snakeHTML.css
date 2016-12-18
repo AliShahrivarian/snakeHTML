@@ -4,11 +4,13 @@ body{
 #snakeHTMLGameBoard{
     position: fixed;
     background: white;
+    z-index: 2;
 }
 #snakeHTMLMenu{
     position: relative;
     text-align: center;
     text-align: -webkit-center;
+    z-index: 2;
 }
 
 #snakeHTMLGameBoard .gameBoardSections{
@@ -36,6 +38,7 @@ body{
     border: 10px solid #9C27B0;
     border-radius: 10px;
     padding: 16px;
+    z-index: 2;
 }
 #snakeStartCoundDown{
     position: fixed;
@@ -46,6 +49,7 @@ body{
     top:20%;
     background:white;
     border: 10px solid #9C27B0;
+    z-index: 2;
 }
 .helpsIcon{
     font-size: 20px;
@@ -101,7 +105,36 @@ body{
     left:35%;
     top:20%;
     border: 10px solid #9C27B0;
+    z-index: 2;
 }
 .hide{
     display: none!important;
+}
+#gameTouchWrapper{
+    position: fixed;
+    right:0px;
+    left:0px;
+    z-index: 1;
+}
+#gameTouchWrapper #rightTouch{
+    float: right;
+    background: white;
+    padding: 12%;
+}
+#gameTouchWrapper #leftTouch{
+    float: left;
+    background: white;
+    padding: 12%;
+}
+#gameTouchWrapper #rightTouch span{    
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-left: 104px solid blue;
+    display: block;
+}
+#gameTouchWrapper #leftTouch span{   
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-right: 104px solid blue;
+    display: block;
 }
