@@ -110,31 +110,3 @@ body{
 .hide{
     display: none!important;
 }
-#gameTouchWrapper{
-    position: fixed;
-    right:0px;
-    left:0px;
-    z-index: 1;
-}
-#gameTouchWrapper #rightTouch{
-    float: right;
-    background: white;
-    padding: 12%;
-}
-#gameTouchWrapper #leftTouch{
-    float: left;
-    background: white;
-    padding: 12%;
-}
-#gameTouchWrapper #rightTouch span{    
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    border-left: 104px solid blue;
-    display: block;
-}
-#gameTouchWrapper #leftTouch span{   
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    border-right: 104px solid blue;
-    display: block;
-}
